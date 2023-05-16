@@ -1,10 +1,8 @@
-//
-//  ScanImageView.swift
-//  DocScan
-//
-//  Created by RaulF on 03/03/2020.
-//  Copyright © 2020 ImTech. All rights reserved.
-//
+// ScanImageView.swift
+//  Created by George-Cristian Cotea on 12/05/2023.
+//  Copyright © 2023 george. All rights reserved.
+
+
 
 import UIKit
 
