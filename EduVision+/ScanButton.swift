@@ -21,12 +21,16 @@ class ScanButton: UIButton {
     //Creating a button that uses the camera.badge.ellipsis SfSymbol
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        setImage(UIImage(systemName: "camera.badge.ellipsis"), for: .normal)
-        tintColor = .label
-        backgroundColor = .systemBackground
-        layer.cornerRadius = 10
-        layer.borderWidth = 2
-        layer.borderColor = UIColor.systemYellow.cgColor
-        imageView?.contentMode = .scaleAspectFit
+        
+        var configuration = UIButton.Configuration.filled()
+        configuration.title = " "
+        configuration.image = UIImage(systemName: "camera.badge.ellipsis")
+        configuration.imagePadding = 8
+        configuration.background.cornerRadius = 10
+        configuration.background.strokeWidth = 2
+        configuration.background.strokeColor = UIColor.systemYellow
+        configuration.baseForegroundColor = .label
+        configuration.baseBackgroundColor = .systemBackground
+        self.configuration = configuration
     }
 }

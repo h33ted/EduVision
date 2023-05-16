@@ -7,18 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E039AE82A0E862500643570 /* GPTRestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E039AE72A0E862500643570 /* GPTRestAPI.swift */; };
-		5E039AEA2A0E86BE00643570 /* CSVRestIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E039AE92A0E86BE00643570 /* CSVRestIntegration.swift */; };
-		5E039AEC2A0E879200643570 /* DbPediaREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E039AEB2A0E879200643570 /* DbPediaREST.swift */; };
-		5E039AEE2A0E8F8D00643570 /* OCR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E039AED2A0E8F8D00643570 /* OCR.storyboard */; };
 		5E039AF02A0E935300643570 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E039AEF2A0E935300643570 /* MainTabBarController.swift */; };
 		5E039AF22A0E954600643570 /* wikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E039AF12A0E954600643570 /* wikiViewController.swift */; };
 		5E039AF42A0E955B00643570 /* quizzingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E039AF32A0E955B00643570 /* quizzingViewController.swift */; };
 		5E039AF62A0E95A600643570 /* quizcsvViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E039AF52A0E95A600643570 /* quizcsvViewController.swift */; };
-		5E039AF82A0E97E700643570 /* wikiTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E039AF72A0E97E700643570 /* wikiTableViewController.swift */; };
+		5EFC3CBA2A1418B400DE4C77 /* OcrTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC3CB92A1418B400DE4C77 /* OcrTextView.swift */; };
 		9450C651240E37E70003884C /* ScanImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9450C650240E37E70003884C /* ScanImageView.swift */; };
 		9450C653240E37FA0003884C /* ScanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9450C652240E37FA0003884C /* ScanButton.swift */; };
-		9457847C241298B3008A43CF /* OcrTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9457847B241298B3008A43CF /* OcrTextView.swift */; };
 		946DD2AE2407F9AD00D1C793 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DD2AD2407F9AD00D1C793 /* AppDelegate.swift */; };
 		946DD2B02407F9AD00D1C793 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DD2AF2407F9AD00D1C793 /* SceneDelegate.swift */; };
 		946DD2B52407F9AD00D1C793 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 946DD2B32407F9AD00D1C793 /* Main.storyboard */; };
@@ -27,18 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5E039AE72A0E862500643570 /* GPTRestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTRestAPI.swift; sourceTree = "<group>"; };
-		5E039AE92A0E86BE00643570 /* CSVRestIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVRestIntegration.swift; sourceTree = "<group>"; };
-		5E039AEB2A0E879200643570 /* DbPediaREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPediaREST.swift; sourceTree = "<group>"; };
-		5E039AED2A0E8F8D00643570 /* OCR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OCR.storyboard; sourceTree = "<group>"; };
 		5E039AEF2A0E935300643570 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		5E039AF12A0E954600643570 /* wikiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wikiViewController.swift; sourceTree = "<group>"; };
 		5E039AF32A0E955B00643570 /* quizzingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quizzingViewController.swift; sourceTree = "<group>"; };
 		5E039AF52A0E95A600643570 /* quizcsvViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quizcsvViewController.swift; sourceTree = "<group>"; };
-		5E039AF72A0E97E700643570 /* wikiTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wikiTableViewController.swift; sourceTree = "<group>"; };
+		5EFC3CB92A1418B400DE4C77 /* OcrTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OcrTextView.swift; sourceTree = "<group>"; };
 		9450C650240E37E70003884C /* ScanImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImageView.swift; sourceTree = "<group>"; };
 		9450C652240E37FA0003884C /* ScanButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanButton.swift; sourceTree = "<group>"; };
-		9457847B241298B3008A43CF /* OcrTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OcrTextView.swift; sourceTree = "<group>"; };
 		946DD2AA2407F9AD00D1C793 /* EduVision+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EduVision+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		946DD2AD2407F9AD00D1C793 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		946DD2AF2407F9AD00D1C793 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,21 +71,16 @@
 				946DD2AD2407F9AD00D1C793 /* AppDelegate.swift */,
 				946DD2AF2407F9AD00D1C793 /* SceneDelegate.swift */,
 				5E039AF12A0E954600643570 /* wikiViewController.swift */,
-				5E039AF72A0E97E700643570 /* wikiTableViewController.swift */,
 				5E039AF52A0E95A600643570 /* quizcsvViewController.swift */,
+				5EFC3CB92A1418B400DE4C77 /* OcrTextView.swift */,
 				5E039AF32A0E955B00643570 /* quizzingViewController.swift */,
 				5E039AEF2A0E935300643570 /* MainTabBarController.swift */,
 				946DD2B32407F9AD00D1C793 /* Main.storyboard */,
 				946DD2B62407F9AF00D1C793 /* Assets.xcassets */,
 				946DD2B82407F9AF00D1C793 /* LaunchScreen.storyboard */,
-				5E039AED2A0E8F8D00643570 /* OCR.storyboard */,
 				946DD2BB2407F9AF00D1C793 /* Info.plist */,
 				9450C650240E37E70003884C /* ScanImageView.swift */,
 				9450C652240E37FA0003884C /* ScanButton.swift */,
-				9457847B241298B3008A43CF /* OcrTextView.swift */,
-				5E039AE72A0E862500643570 /* GPTRestAPI.swift */,
-				5E039AE92A0E86BE00643570 /* CSVRestIntegration.swift */,
-				5E039AEB2A0E879200643570 /* DbPediaREST.swift */,
 			);
 			path = "EduVision+";
 			sourceTree = "<group>";
@@ -160,7 +145,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				946DD2BA2407F9AF00D1C793 /* LaunchScreen.storyboard in Resources */,
-				5E039AEE2A0E8F8D00643570 /* OCR.storyboard in Resources */,
 				946DD2B72407F9AF00D1C793 /* Assets.xcassets in Resources */,
 				946DD2B52407F9AD00D1C793 /* Main.storyboard in Resources */,
 			);
@@ -174,15 +158,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9450C653240E37FA0003884C /* ScanButton.swift in Sources */,
-				5E039AEC2A0E879200643570 /* DbPediaREST.swift in Sources */,
+				5EFC3CBA2A1418B400DE4C77 /* OcrTextView.swift in Sources */,
 				5E039AF02A0E935300643570 /* MainTabBarController.swift in Sources */,
 				5E039AF42A0E955B00643570 /* quizzingViewController.swift in Sources */,
-				5E039AF82A0E97E700643570 /* wikiTableViewController.swift in Sources */,
-				5E039AEA2A0E86BE00643570 /* CSVRestIntegration.swift in Sources */,
 				9450C651240E37E70003884C /* ScanImageView.swift in Sources */,
-				5E039AE82A0E862500643570 /* GPTRestAPI.swift in Sources */,
 				946DD2AE2407F9AD00D1C793 /* AppDelegate.swift in Sources */,
-				9457847C241298B3008A43CF /* OcrTextView.swift in Sources */,
 				5E039AF22A0E954600643570 /* wikiViewController.swift in Sources */,
 				5E039AF62A0E95A600643570 /* quizcsvViewController.swift in Sources */,
 				946DD2B02407F9AD00D1C793 /* SceneDelegate.swift in Sources */,

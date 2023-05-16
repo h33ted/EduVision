@@ -1,9 +1,9 @@
 //
 //  OcrTextView.swift
-//  DocScan
+//  EduVision+
 //
-//  Created by RaulF on 06/03/2020.
-//  Copyright © 2020 ImTech. All rights reserved.
+//  Created by George-Cristian Cotea on 12/05/2023.
+//  Copyright © 2023 george. All rights reserved.
 //
 
 import UIKit
