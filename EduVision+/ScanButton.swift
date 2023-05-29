@@ -15,7 +15,6 @@ class ScanButton: UIButton {
         configure()
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -30,9 +29,9 @@ class ScanButton: UIButton {
         configuration.imagePadding = 8
         configuration.background.cornerRadius = 10
         configuration.background.strokeWidth = 2
-        configuration.background.strokeColor = UIColor.systemYellow
-        configuration.baseForegroundColor = .label
-        configuration.baseBackgroundColor = .systemBackground
+        configuration.background.strokeColor = UIColor(red: 239/255, green: 234/255, blue: 229/255, alpha: 1)
+        configuration.baseForegroundColor = .black // Black text and image color
+        configuration.baseBackgroundColor = UIColor(red: 210/255, green: 180/255, blue: 140/255, alpha: 1.0) // Dark Beige Color
         self.configuration = configuration
     }
 }

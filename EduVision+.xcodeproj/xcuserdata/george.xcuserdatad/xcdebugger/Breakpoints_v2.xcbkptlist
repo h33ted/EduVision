@@ -3,4 +3,54 @@
    uuid = "572B6EF8-A915-446D-938A-34D889EB8AB9"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "136C48A1-A38B-4D06-871E-53FE1FD0E19E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EduVision+/wikiViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "scanDocument()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "136C48A1-A38B-4D06-871E-53FE1FD0E19E - ea5bb3f77887a00e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EduVision_.wikiViewController.scanDocument() -&gt; ()"
+                  moduleName = "EduVision+"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/External/EduVision/EduVision+/wikiViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "136C48A1-A38B-4D06-871E-53FE1FD0E19E - 7f65ff10041bcbda"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Learniverse.wikiViewController.scanDocument() -&gt; ()"
+                  moduleName = "Learniverse"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/External/EduVision/EduVision+/wikiViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

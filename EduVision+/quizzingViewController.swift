@@ -6,120 +6,57 @@
 //  Copyright © 2023 george. All rights reserved.
 //
 
-import Foundation
 import UIKit
-import Vision
-import VisionKit
 
 class quizzingViewController: UIViewController {
-    
-    private var scanButton = ScanButton(frame: .zero)
-    private var scanImageView = ScanImageView(frame: .zero)
-    private var ocrTextView = OcrTextView(frame: .zero, textContainer: nil)
-    private var ocrRequest = VNRecognizeTextRequest(completionHandler: nil)
-    
+    private var infoLabel: UILabel!
+    private var iconImageView: UIImageView!
+    private var titleLabel = UILabel()  // The title label
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configure()
-        configureOCR()
+        adjustBackgroundColor()
     }
-
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        adjustBackgroundColor()
+    }
     
+    private func adjustBackgroundColor() {
+        if self.traitCollection.userInterfaceStyle == .dark {
+            // Dark Marine Blue color for Dark Mode
+            view.backgroundColor = UIColor(red: 61/255, green: 43/255, blue: 31/255, alpha: 0.5)
+        } else {
+            // Light Color for Light Mode
+            view.backgroundColor = UIColor(red: 239/255, green: 234/255, blue: 229/255, alpha: 1)
+        }
+    }
     private func configure() {
-        view.addSubview(scanImageView)
-        view.addSubview(ocrTextView)
-        view.addSubview(scanButton)
-        
-        let padding: CGFloat = 16
+        infoLabel = UILabel()
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        infoLabel.textAlignment = .center
+        infoLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        infoLabel.text = "You came here too soon!"
+
+        iconImageView = UIImageView()
+        iconImageView.translatesAutoresizingMaskIntoConstraints = false
+        iconImageView.contentMode = .scaleAspectFit
+        iconImageView.image = UIImage(systemName: "exclamationmark.triangle")
+        iconImageView.tintColor = .systemGray
+
+        view.addSubview(infoLabel)
+        view.addSubview(iconImageView)
+
         NSLayoutConstraint.activate([
-            scanButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            scanButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            scanButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
-            scanButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            ocrTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            ocrTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            ocrTextView.bottomAnchor.constraint(equalTo: scanButton.topAnchor, constant: -padding),
-            ocrTextView.heightAnchor.constraint(equalToConstant: 200),
-            
-            scanImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            scanImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-            scanImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            scanImageView.bottomAnchor.constraint(equalTo: ocrTextView.topAnchor, constant: -padding)
+            iconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            iconImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            iconImageView.widthAnchor.constraint(equalToConstant: 50),
+            iconImageView.heightAnchor.constraint(equalToConstant: 50),
+
+            infoLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 20),
+            infoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            infoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
         ])
-        
-        scanButton.addTarget(self, action: #selector(scanDocument), for: .touchUpInside)
-    }
-    
-    
-    @objc private func scanDocument() {
-        let scanVC = VNDocumentCameraViewController()
-        scanVC.delegate = self
-        present(scanVC, animated: true)
-    }
-    
-    
-    private func processImage(_ image: UIImage) {
-        guard let cgImage = image.cgImage else { return }
-
-        ocrTextView.text = ""
-        scanButton.isEnabled = false
-        
-        let requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
-        do {
-            try requestHandler.perform([self.ocrRequest])
-        } catch {
-            print(error)
-        }
-    }
-
-    
-    private func configureOCR() {
-        ocrRequest = VNRecognizeTextRequest { (request, error) in
-            guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
-            
-            var ocrText = ""
-            for observation in observations {
-                guard let topCandidate = observation.topCandidates(1).first else { return }
-                
-                ocrText += topCandidate.string + "\n"
-            }
-            
-            
-            DispatchQueue.main.async {
-                self.ocrTextView.text = ocrText
-                self.scanButton.isEnabled = true
-            }
-        }
-        
-        ocrRequest.recognitionLevel = .accurate
-        ocrRequest.recognitionLanguages = ["en-US", "en-GB"]
-        ocrRequest.usesLanguageCorrection = true
     }
 }
-
-
-extension quizzingViewController: VNDocumentCameraViewControllerDelegate {
-    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
-        guard scan.pageCount >= 1 else {
-            controller.dismiss(animated: true)
-            return
-        }
-        
-        scanImageView.image = scan.imageOfPage(at: 0)
-        processImage(scan.imageOfPage(at: 0))
-        controller.dismiss(animated: true)
-    }
-    
-    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
-        //Handle properly error
-        controller.dismiss(animated: true)
-    }
-    
-    func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
-        controller.dismiss(animated: true)
-    }
-}
-
