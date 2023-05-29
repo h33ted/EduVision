@@ -12,9 +12,13 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.tintColor = UIColor.systemBrown
-        tabBar.unselectedItemTintColor = UIColor.label
         setupViewControllers()
+        adjustTabBarColorScheme()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        adjustTabBarColorScheme()
     }
 
     func setupViewControllers() {
@@ -32,5 +36,16 @@ class MainTabBarController: UITabBarController {
 
         viewControllers = [navigationController1, navigationController2, navigationController3]
     }
+    
+    func adjustTabBarColorScheme() {
+        if self.traitCollection.userInterfaceStyle == .dark {
+            // Use lighter colors for dark mode
+            tabBar.tintColor = UIColor(red: 212/255, green: 178/255, blue: 216/255, alpha: 1.0)
+            tabBar.unselectedItemTintColor = UIColor.lightGray
+        } else {
+            // Use darker colors for light mode
+            tabBar.tintColor = UIColor.systemBrown
+            tabBar.unselectedItemTintColor = UIColor.label
+        }
     }
-
+}

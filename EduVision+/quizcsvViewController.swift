@@ -18,7 +18,8 @@ class quizcsvViewController: UIViewController {
     private func adjustBackgroundColor() {
         if self.traitCollection.userInterfaceStyle == .dark {
             // Dark Marine Blue color for Dark Mode
-            view.backgroundColor = UIColor(red: 61/255, green: 43/255, blue: 31/255, alpha: 0.5)
+            view.backgroundColor = UIColor(red: 130/255, green: 108/255, blue: 127/255, alpha: 0.9)
+            iconImageView.tintColor = UIColor(red: 168/255, green: 143/255, blue: 172/255, alpha: 0.7)
         } else {
             // Light Color for Light Mode
             view.backgroundColor = UIColor(red: 239/255, green: 234/255, blue: 229/255, alpha: 1)
@@ -35,7 +36,7 @@ class quizcsvViewController: UIViewController {
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         iconImageView.contentMode = .scaleAspectFit
         iconImageView.image = UIImage(systemName: "exclamationmark.triangle")
-        iconImageView.tintColor = .systemGray
+        iconImageView.tintColor = .black.withAlphaComponent(0.3)
 
         view.addSubview(infoLabel)
         view.addSubview(iconImageView)

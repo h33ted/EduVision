@@ -11,30 +11,35 @@ class wikiViewController: UIViewController {
     private var ocrRequest = VNRecognizeTextRequest(completionHandler: nil)
     private var wikiLinks: [String: String] = [:]
     private var titleLabel = UILabel()  // The title label
+    private var textViewActivityIndicator = UIActivityIndicatorView(style: .large)
+    private var tableViewActivityIndicator = UIActivityIndicatorView(style: .large)
+    private var placeholderLabel = UILabel()
+
 
     override func viewDidLoad() {
             super.viewDidLoad()
-            
+        
             adjustBackgroundColor()
             configure()
             configureOCR()
             configureTableView()
         }
 
-        override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-            super.traitCollectionDidChange(previousTraitCollection)
-            adjustBackgroundColor()
-        }
         
-        private func adjustBackgroundColor() {
-            if self.traitCollection.userInterfaceStyle == .dark {
-                // Dark Marine Blue color for Dark Mode
-                view.backgroundColor = UIColor(red: 61/255, green: 43/255, blue: 31/255, alpha: 0.5)
-            } else {
-                // Light Color for Light Mode
-                view.backgroundColor = UIColor(red: 239/255, green: 234/255, blue: 229/255, alpha: 1)
-            }
+    private func adjustBackgroundColor() {
+        view.backgroundColor = UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(red: 130/255, green: 108/255, blue: 127/255, alpha: 0.9) : UIColor(red: 239/255, green: 234/255, blue: 229/255, alpha: 1)
         }
+
+        summaryTextView.backgroundColor = UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(red: 168/255, green: 143/255, blue: 172/255, alpha: 0.7) : UIColor(red: 245/255, green: 222/255, blue: 179/255, alpha: 1.0)
+        }
+
+        wikiLinksTableView.backgroundColor = UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(red: 168/255, green: 143/255, blue: 172/255, alpha: 0.7) : UIColor(red: 245/255, green: 222/255, blue: 179/255, alpha: 1.0)
+        }
+    }
+
     
     private func configure() {
         
@@ -50,12 +55,17 @@ class wikiViewController: UIViewController {
         summaryTextView.translatesAutoresizingMaskIntoConstraints = false
         wikiLinksTableView.translatesAutoresizingMaskIntoConstraints = false
         scanButton.translatesAutoresizingMaskIntoConstraints = false
+        summaryTextView.addSubview(textViewActivityIndicator)
+        wikiLinksTableView.addSubview(tableViewActivityIndicator)
+        textViewActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        tableViewActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        summaryTextView.isEditable = false
 
         let padding: CGFloat = 16
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant:padding),
-                        titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-                        titleLabel.bottomAnchor.constraint(equalTo: summaryTextView.topAnchor, constant: -10),  // put it on top of summaryTextView
+            titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            titleLabel.bottomAnchor.constraint(equalTo: summaryTextView.topAnchor, constant: -10),  // put it on top of summaryTextView
             
             scanButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
             scanButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
@@ -71,14 +81,36 @@ class wikiViewController: UIViewController {
             summaryTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
             summaryTextView.bottomAnchor.constraint(equalTo: wikiLinksTableView.topAnchor, constant: -padding),
             summaryTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            
+            textViewActivityIndicator.centerXAnchor.constraint(equalTo: summaryTextView.centerXAnchor),
+            textViewActivityIndicator.centerYAnchor.constraint(equalTo: summaryTextView.centerYAnchor),
+                    
+            tableViewActivityIndicator.centerXAnchor.constraint(equalTo: wikiLinksTableView.centerXAnchor),
+            tableViewActivityIndicator.centerYAnchor.constraint(equalTo: wikiLinksTableView.centerYAnchor),
         ])
 
-        summaryTextView.backgroundColor = UIColor(red: 245/255, green: 222/255, blue: 179/255, alpha: 1.0)
+        //summaryTextView.backgroundColor = UIColor(red: 245/255, green: 222/255, blue: 179/255, alpha: 1.0)
         summaryTextView.textColor = .black
         summaryTextView.font = UIFont.systemFont(ofSize: 18)
         summaryTextView.layer.cornerRadius = 16
         summaryTextView.textContainerInset = UIEdgeInsets(top: 8, left: 14, bottom: 8, right: 14)
         summaryTextView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+       
+        placeholderLabel.numberOfLines = 0
+        placeholderLabel.textAlignment = .center
+        placeholderLabel.text = "No summary yet.\nScan a document to get started."
+        placeholderLabel.font = UIFont.boldSystemFont(ofSize: 22) // make the font bold and increase size here
+        placeholderLabel.textColor = UIColor.black.withAlphaComponent(0.3) // make text slightly transparent here
+        placeholderLabel.sizeToFit()
+
+        summaryTextView.addSubview(placeholderLabel)
+        // You need to adjust the label's frame to fit in the center of your text view.
+        placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
+        placeholderLabel.centerXAnchor.constraint(equalTo: summaryTextView.centerXAnchor).isActive = true
+        placeholderLabel.centerYAnchor.constraint(equalTo: summaryTextView.centerYAnchor).isActive = true
+        placeholderLabel.isHidden = !summaryTextView.text.isEmpty
+
+
 
         wikiLinksTableView.layer.cornerRadius = 16
         wikiLinksTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -86,12 +118,16 @@ class wikiViewController: UIViewController {
         
         scanButton.addTarget(self, action: #selector(scanDocument), for: .touchUpInside)
     }
+    
+    private func updatePlaceholderVisibility() {
+        placeholderLabel.isHidden = !summaryTextView.text.isEmpty
+    }
 
     private func configureTableView() {
         wikiLinksTableView.delegate = self
         wikiLinksTableView.dataSource = self
         wikiLinksTableView.register(UITableViewCell.self, forCellReuseIdentifier: "wikiLinkCell")
-        wikiLinksTableView.backgroundColor = UIColor(red: 245/255, green: 222/255, blue: 179/255, alpha: 1.0)
+        //wikiLinksTableView.backgroundColor = UIColor(red: 245/255, green: 222/255, blue: 179/255, alpha: 1.0)
         wikiLinksTableView.layer.cornerRadius = 16
     }
 
@@ -142,56 +178,69 @@ class wikiViewController: UIViewController {
     
     
     private func sendSummaryRequest(ocrText: String) {
-        guard let url = URL(string: "http://79.118.98.36:8000/summarize") else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        let requestBodyString = "text=\(ocrText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
-        request.httpBody = requestBodyString.data(using: .utf8)
-        
-        let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
-            guard let data = data, error == nil else { return }
+            guard let url = URL(string: "http://79.118.98.36:8000/summarize") else { return }
             
-            do {
-                if let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    DispatchQueue.main.async {
-                        self?.summaryTextView.text = jsonResponse["response"] as? String ?? ""
-                        self?.scanButton.isEnabled = true
-                    }
-                }
-            } catch {
-                print("JSON text was not in the correct format")
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            let requestBodyString = "text=\(ocrText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
+            request.httpBody = requestBodyString.data(using: .utf8)
+
+            DispatchQueue.main.async {
+                self.textViewActivityIndicator.startAnimating()
             }
+
+            let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
+                guard let data = data, error == nil else { return }
+                
+                do {
+                    if let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                        DispatchQueue.main.async {
+                            self?.summaryTextView.text = jsonResponse["response"] as? String ?? ""
+                            self?.scanButton.isEnabled = true
+                            self?.updatePlaceholderVisibility() // update visibility of the placeholder
+                            self?.summaryTextView.text = jsonResponse["response"] as? String ?? ""
+                            self?.scanButton.isEnabled = true
+                            self?.textViewActivityIndicator.stopAnimating()
+                        }
+                    }
+                } catch {
+                    print("JSON text was not in the correct format")
+                }
+            }
+            task.resume()
         }
-        task.resume()
-    }
 
     private func sendWikiRequest(ocrText: String) {
-        guard let url = URL(string: "http://79.118.98.36:8000/wiki") else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        let requestBodyString = "text=\(ocrText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
-        request.httpBody = requestBodyString.data(using: .utf8)
-        
-        let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
-            guard let data = data, error == nil else { return }
+            guard let url = URL(string: "http://79.118.98.36:8000/wiki") else { return }
             
-            do {
-                if let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
-                    DispatchQueue.main.async {
-                        self?.wikiLinks = jsonResponse
-                        self?.wikiLinksTableView.reloadData()
-                    }
-                }
-            } catch {
-                print("JSON text was not in the correct format")
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            let requestBodyString = "text=\(ocrText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
+            request.httpBody = requestBodyString.data(using: .utf8)
+            
+            DispatchQueue.main.async {
+                self.tableViewActivityIndicator.startAnimating()
             }
-        }
-        task.resume()
-    }
+            
+            let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
+                guard let data = data, error == nil else { return }
+                
+                do {
+                    if let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
+                        DispatchQueue.main.async {
+                            self?.wikiLinks = jsonResponse
+                            self?.wikiLinksTableView.reloadData()
+                            self?.tableViewActivityIndicator.stopAnimating()
+                                                }
+                                            }
+                                        } catch {
+                                            print("JSON text was not in the correct format")
+                                        }
+                                    }
+                                    task.resume()
+                                }
 }
 
 extension wikiViewController: VNDocumentCameraViewControllerDelegate {
