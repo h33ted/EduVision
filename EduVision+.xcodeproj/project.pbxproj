@@ -11,7 +11,6 @@
 		5E039AF22A0E954600643570 /* wikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E039AF12A0E954600643570 /* wikiViewController.swift */; };
 		5E039AF42A0E955B00643570 /* quizzingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E039AF32A0E955B00643570 /* quizzingViewController.swift */; };
 		5E039AF62A0E95A600643570 /* quizcsvViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E039AF52A0E95A600643570 /* quizcsvViewController.swift */; };
-		5E37508A2A20FE9700A81F61 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3750892A20FE9700A81F61 /* SwiftyJSON.swift */; };
 		5EFC3CBA2A1418B400DE4C77 /* OcrTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC3CB92A1418B400DE4C77 /* OcrTextView.swift */; };
 		9450C651240E37E70003884C /* ScanImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9450C650240E37E70003884C /* ScanImageView.swift */; };
 		9450C653240E37FA0003884C /* ScanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9450C652240E37FA0003884C /* ScanButton.swift */; };
@@ -28,8 +27,6 @@
 		5E039AF32A0E955B00643570 /* quizzingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quizzingViewController.swift; sourceTree = "<group>"; };
 		5E039AF52A0E95A600643570 /* quizcsvViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quizcsvViewController.swift; sourceTree = "<group>"; };
 		5E3750882A1F82AA00A81F61 /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
-		5E3750892A20FE9700A81F61 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = "../../../../Users/george/Downloads/SwiftyJSON-master/Source/SwiftyJSON/SwiftyJSON.swift"; sourceTree = "<group>"; };
-		5E37508B2A20FEA400A81F61 /* SwiftyJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyJSON.h; sourceTree = "<group>"; };
 		5EFC3CB92A1418B400DE4C77 /* OcrTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OcrTextView.swift; sourceTree = "<group>"; };
 		9450C650240E37E70003884C /* ScanImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanImageView.swift; sourceTree = "<group>"; };
 		9450C652240E37FA0003884C /* ScanButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanButton.swift; sourceTree = "<group>"; };
@@ -77,7 +74,6 @@
 				946DD2AF2407F9AD00D1C793 /* SceneDelegate.swift */,
 				5E039AF12A0E954600643570 /* wikiViewController.swift */,
 				5E039AF52A0E95A600643570 /* quizcsvViewController.swift */,
-				5E37508B2A20FEA400A81F61 /* SwiftyJSON.h */,
 				5EFC3CB92A1418B400DE4C77 /* OcrTextView.swift */,
 				5E039AF32A0E955B00643570 /* quizzingViewController.swift */,
 				5E039AEF2A0E935300643570 /* MainTabBarController.swift */,
@@ -87,7 +83,6 @@
 				946DD2BB2407F9AF00D1C793 /* Info.plist */,
 				9450C650240E37E70003884C /* ScanImageView.swift */,
 				9450C652240E37FA0003884C /* ScanButton.swift */,
-				5E3750892A20FE9700A81F61 /* SwiftyJSON.swift */,
 			);
 			path = "EduVision+";
 			sourceTree = "<group>";
@@ -167,7 +162,6 @@
 				9450C653240E37FA0003884C /* ScanButton.swift in Sources */,
 				5EFC3CBA2A1418B400DE4C77 /* OcrTextView.swift in Sources */,
 				5E039AF02A0E935300643570 /* MainTabBarController.swift in Sources */,
-				5E37508A2A20FE9700A81F61 /* SwiftyJSON.swift in Sources */,
 				5E039AF42A0E955B00643570 /* quizzingViewController.swift in Sources */,
 				9450C651240E37E70003884C /* ScanImageView.swift in Sources */,
 				946DD2AE2407F9AD00D1C793 /* AppDelegate.swift in Sources */,
