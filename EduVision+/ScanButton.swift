@@ -24,8 +24,8 @@ class ScanButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         
         var configuration = UIButton.Configuration.filled()
-        configuration.title = " "
-        configuration.image = UIImage(systemName: "camera.badge.ellipsis")
+        configuration.title = "Scan"
+        //configuration.image = UIImage(systemName: "camera.badge.ellipsis")
         configuration.imagePadding = 8
         configuration.background.cornerRadius = 10
         configuration.background.strokeWidth = 0

@@ -28,15 +28,15 @@ class wikiViewController: UIViewController {
         
     private func adjustBackgroundColor() {
         view.backgroundColor = UIColor { traitCollection in
-            return traitCollection.userInterfaceStyle == .dark ? UIColor(red: 130/255, green: 108/255, blue: 127/255, alpha: 0.9) : UIColor(red: 239/255, green: 234/255, blue: 229/255, alpha: 1)
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(red: 130/255, green: 108/255, blue: 127/255, alpha: 1) : UIColor(red: 239/255, green: 234/255, blue: 229/255, alpha: 1)
         }
 
         summaryTextView.backgroundColor = UIColor { traitCollection in
-            return traitCollection.userInterfaceStyle == .dark ? UIColor(red: 168/255, green: 143/255, blue: 172/255, alpha: 0.7) : UIColor(red: 245/255, green: 222/255, blue: 179/255, alpha: 1.0)
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(red: 168/255, green: 143/255, blue: 172/255, alpha: 1) : UIColor(red: 245/255, green: 222/255, blue: 179/255, alpha: 1.0)
         }
 
         wikiLinksTableView.backgroundColor = UIColor { traitCollection in
-            return traitCollection.userInterfaceStyle == .dark ? UIColor(red: 168/255, green: 143/255, blue: 172/255, alpha: 0.7) : UIColor(red: 245/255, green: 222/255, blue: 179/255, alpha: 1.0)
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(red: 168/255, green: 143/255, blue: 172/255, alpha: 1) : UIColor(red: 245/255, green: 222/255, blue: 179/255, alpha: 1.0)
         }
     }
 
@@ -44,8 +44,8 @@ class wikiViewController: UIViewController {
     private func configure() {
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-                titleLabel.text = "Learniverse"
-        titleLabel.font = UIFont.systemFont(ofSize: 32, weight: UIFont.Weight(30))
+                titleLabel.text = "Summarize"
+        titleLabel.font = UIFont.systemFont(ofSize: 28, weight: UIFont.Weight(30))
                 titleLabel.textAlignment = .left
                 view.addSubview(titleLabel)
         view.addSubview(summaryTextView)
@@ -60,34 +60,36 @@ class wikiViewController: UIViewController {
         textViewActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
         tableViewActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
         summaryTextView.isEditable = false
-
         let padding: CGFloat = 16
+        let verticalAdjustment: CGFloat = 6 // This is the adjustment value
+
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant:padding),
+
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: verticalAdjustment),
+            titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: padding),
             titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            titleLabel.bottomAnchor.constraint(equalTo: summaryTextView.topAnchor, constant: -10),  // put it on top of summaryTextView
-            
-            scanButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            scanButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            scanButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
-            scanButton.heightAnchor.constraint(equalToConstant: 50),
 
-            wikiLinksTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            wikiLinksTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            wikiLinksTableView.bottomAnchor.constraint(equalTo: scanButton.topAnchor, constant: -padding),
-            wikiLinksTableView.heightAnchor.constraint(equalToConstant: 200),
-
+            summaryTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: padding + verticalAdjustment),
             summaryTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
             summaryTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            summaryTextView.bottomAnchor.constraint(equalTo: wikiLinksTableView.topAnchor, constant: -padding),
-            summaryTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-            
+
+            wikiLinksTableView.topAnchor.constraint(equalTo: summaryTextView.bottomAnchor, constant: padding + verticalAdjustment),
+            wikiLinksTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            wikiLinksTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            wikiLinksTableView.heightAnchor.constraint(equalToConstant: 200),
+
+            scanButton.topAnchor.constraint(equalTo: wikiLinksTableView.bottomAnchor, constant: padding + verticalAdjustment),
+            scanButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            scanButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            scanButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding - verticalAdjustment),
+
             textViewActivityIndicator.centerXAnchor.constraint(equalTo: summaryTextView.centerXAnchor),
             textViewActivityIndicator.centerYAnchor.constraint(equalTo: summaryTextView.centerYAnchor),
                     
             tableViewActivityIndicator.centerXAnchor.constraint(equalTo: wikiLinksTableView.centerXAnchor),
             tableViewActivityIndicator.centerYAnchor.constraint(equalTo: wikiLinksTableView.centerYAnchor),
         ])
+
 
         //summaryTextView.backgroundColor = UIColor(red: 245/255, green: 222/255, blue: 179/255, alpha: 1.0)
         summaryTextView.textColor = .black
@@ -284,5 +286,6 @@ extension wikiViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
+
 
 

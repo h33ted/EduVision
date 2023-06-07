@@ -26,7 +26,7 @@ class quizzingViewController: UIViewController {
     private func adjustBackgroundColor() {
         if self.traitCollection.userInterfaceStyle == .dark {
             // Dark Marine Blue color for Dark Mode
-            view.backgroundColor = UIColor(red: 130/255, green: 108/255, blue: 127/255, alpha: 0.9)
+            view.backgroundColor = UIColor(red: 130/255, green: 108/255, blue: 127/255, alpha: 1)
             iconImageView.tintColor = UIColor(red: 168/255, green: 143/255, blue: 172/255, alpha: 0.7)
         } else {
             // Light Color for Light Mode
