@@ -38,13 +38,13 @@ class tosViewController: UIViewController {
         infoLabel = UILabel()
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
         infoLabel.textAlignment = .center
-        infoLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        infoLabel.text = "You came here too soon!"
-
+        infoLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        infoLabel.text = "This app employs AI technology provided by OpenAI, which might not be fully accurate and might 'hallucinate' information. \n This app is in development, it might have downtime.\n Being part of a study, this app might collect some personal data, as presented in the sign-up quiz"
+        infoLabel.numberOfLines = 10
         iconImageView = UIImageView()
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         iconImageView.contentMode = .scaleAspectFit
-        iconImageView.image = UIImage(systemName: "exclamationmark.triangle")
+        iconImageView.image = UIImage(systemName: "doc.append")
         iconImageView.tintColor = .black.withAlphaComponent(0.3)
 
         view.addSubview(infoLabel)
@@ -57,8 +57,8 @@ class tosViewController: UIViewController {
             iconImageView.heightAnchor.constraint(equalToConstant: 50),
 
             infoLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 20),
-            infoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            infoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            infoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            infoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }

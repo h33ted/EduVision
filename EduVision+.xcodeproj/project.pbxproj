@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E039AF02A0E935300643570 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E039AEF2A0E935300643570 /* MainTabBarController.swift */; };
 		5E039AF22A0E954600643570 /* wikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E039AF12A0E954600643570 /* wikiViewController.swift */; };
 		5E039AF62A0E95A600643570 /* quizcsvViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E039AF52A0E95A600643570 /* quizcsvViewController.swift */; };
 		5EC51D3A2A309BB200F5C4D7 /* tosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC51D392A309BB200F5C4D7 /* tosViewController.swift */; };
@@ -24,7 +23,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5E039AEF2A0E935300643570 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		5E039AF12A0E954600643570 /* wikiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wikiViewController.swift; sourceTree = "<group>"; };
 		5E039AF52A0E95A600643570 /* quizcsvViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quizcsvViewController.swift; sourceTree = "<group>"; };
 		5E3750882A1F82AA00A81F61 /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 				5EFC3CB92A1418B400DE4C77 /* OcrTextView.swift */,
 				5EC51D3B2A309C3000F5C4D7 /* settingsViewController.swift */,
 				5EC51D392A309BB200F5C4D7 /* tosViewController.swift */,
-				5E039AEF2A0E935300643570 /* MainTabBarController.swift */,
 				946DD2B32407F9AD00D1C793 /* Main.storyboard */,
 				946DD2B62407F9AF00D1C793 /* Assets.xcassets */,
 				946DD2B82407F9AF00D1C793 /* LaunchScreen.storyboard */,
@@ -167,7 +164,6 @@
 			files = (
 				9450C653240E37FA0003884C /* ScanButton.swift in Sources */,
 				5EFC3CBA2A1418B400DE4C77 /* OcrTextView.swift in Sources */,
-				5E039AF02A0E935300643570 /* MainTabBarController.swift in Sources */,
 				9450C651240E37E70003884C /* ScanImageView.swift in Sources */,
 				5ED691122A26A7F3002D8130 /* IntroViewController.swift in Sources */,
 				946DD2AE2407F9AD00D1C793 /* AppDelegate.swift in Sources */,

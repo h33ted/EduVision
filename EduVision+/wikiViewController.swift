@@ -180,7 +180,7 @@ class wikiViewController: UIViewController {
     
     
     private func sendSummaryRequest(ocrText: String) {
-            guard let url = URL(string: "http://79.118.98.36:8000/summarize") else { return }
+            guard let url = URL(string: "http://185.229.227.172:1331/summarize") else { return }
             
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
@@ -214,7 +214,7 @@ class wikiViewController: UIViewController {
         }
 
     private func sendWikiRequest(ocrText: String) {
-            guard let url = URL(string: "http://79.118.98.36:8000/wiki") else { return }
+            guard let url = URL(string: "http://185.229.227.172:1331/wiki") else { return }
             
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
